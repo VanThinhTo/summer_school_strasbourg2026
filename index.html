@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Strasbourg Summer School in Chemoinformatics 2026 Hackathon</title>
+    <meta
+      name="description"
+      content="Hackathon project showcase for the Strasbourg Summer School in Chemoinformatics 2026."
+    >
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #172126;
+        --muted: #5f6f75;
+        --line: #d7e0df;
+        --paper: #fbfaf7;
+        --panel: #ffffff;
+        --teal: #0f766e;
+        --green: #477a2d;
+        --orange: #bf5b1f;
+        --blue: #235f95;
+        --yellow: #f0b429;
+        --shadow: 0 18px 50px rgba(26, 39, 42, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--paper);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .wrap {
+        width: min(1180px, calc(100% - 36px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(23, 33, 38, 0.08);
+        background: rgba(251, 250, 247, 0.92);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav {
+        display: flex;
+        min-height: 70px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        display: grid;
+        gap: 1px;
+      }
+
+      .brand strong {
+        font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+        letter-spacing: 0;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .nav-links a,
+      .button {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+        color: var(--ink);
+        font-size: 0.9rem;
+        font-weight: 700;
+        padding: 8px 12px;
+        transition:
+          border-color 160ms ease,
+          transform 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .nav-links a:hover,
+      .button:hover {
+        border-color: rgba(15, 118, 110, 0.55);
+        box-shadow: 0 8px 24px rgba(15, 118, 110, 0.12);
+        transform: translateY(-1px);
+      }
+
+      .button.primary {
+        border-color: var(--teal);
+        background: var(--teal);
+        color: white;
+      }
+
+      .button.ghost {
+        background: transparent;
+      }
+
+      .button.disabled,
+      .button.disabled:hover {
+        border-color: var(--line);
+        background: #edf1f0;
+        color: #718083;
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+      }
+
+      .hero {
+        padding: clamp(34px, 5vw, 72px) 0 28px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(330px, 0.82fr);
+        gap: clamp(24px, 4vw, 54px);
+        align-items: center;
+      }
+
+      .eyebrow {
+        color: var(--teal);
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 900px;
+        margin-top: 12px;
+        font-size: clamp(2.4rem, 7vw, 6.1rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 760px;
+        margin-top: 22px;
+        color: #38494f;
+        font-size: clamp(1.04rem, 1.7vw, 1.28rem);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .quick-facts {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .fact {
+        min-height: 88px;
+        border-left: 4px solid var(--teal);
+        background: rgba(255, 255, 255, 0.7);
+        padding: 14px 16px;
+      }
+
+      .fact:nth-child(2) {
+        border-color: var(--orange);
+      }
+
+      .fact:nth-child(3) {
+        border-color: var(--green);
+      }
+
+      .fact strong {
+        display: block;
+        font-size: 1.3rem;
+        line-height: 1.1;
+      }
+
+      .fact span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .media-stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .hero-image {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: clamp(180px, 25vw, 310px);
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .mini-images {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .mini-images img {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        object-fit: cover;
+        background: white;
+      }
+
+      .section {
+        padding: clamp(38px, 6vw, 78px) 0;
+      }
+
+      .section.band {
+        border-top: 1px solid rgba(23, 33, 38, 0.08);
+        border-bottom: 1px solid rgba(23, 33, 38, 0.08);
+        background: #eef5f2;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 24px;
+      }
+
+      .section h2 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        line-height: 1.06;
+        letter-spacing: 0;
+      }
+
+      .section-head p {
+        max-width: 540px;
+        color: var(--muted);
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .project {
+        display: grid;
+        min-height: 100%;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .project.featured {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        grid-column: 1 / -1;
+      }
+
+      .project-media {
+        min-height: 240px;
+        background:
+          linear-gradient(135deg, rgba(15, 118, 110, 0.08), transparent),
+          #f5f7f5;
+      }
+
+      .project-media img {
+        width: 100%;
+        height: 100%;
+        min-height: 240px;
+        object-fit: cover;
+      }
+
+      .project-body {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        gap: 16px;
+        padding: clamp(18px, 2.2vw, 28px);
+      }
+
+      .project-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .number {
+        flex: 0 0 auto;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-grid;
+        place-items: center;
+        background: #f3c969;
+        color: #1f2528;
+        font-weight: 900;
+      }
+
+      .project h3 {
+        overflow-wrap: anywhere;
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+
+      .project p {
+        color: #435359;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .tag {
+        border: 1px solid rgba(15, 118, 110, 0.24);
+        border-radius: 999px;
+        background: #eef7f5;
+        color: #22514d;
+        font-size: 0.78rem;
+        font-weight: 800;
+        padding: 5px 9px;
+      }
+
+      .deliverables {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .deliverables li {
+        display: grid;
+        grid-template-columns: 10px 1fr;
+        gap: 10px;
+        color: #31434a;
+      }
+
+      .deliverables li::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-top: 0.55em;
+        background: var(--orange);
+      }
+
+      .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: auto;
+      }
+
+      .placeholder-media {
+        display: grid;
+        min-height: 220px;
+        place-items: center;
+        padding: 26px;
+      }
+
+      .molecule {
+        width: min(280px, 100%);
+        aspect-ratio: 1;
+        position: relative;
+      }
+
+      .molecule span {
+        position: absolute;
+        width: 24%;
+        aspect-ratio: 1;
+        border: 2px solid rgba(15, 118, 110, 0.72);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .molecule span:nth-child(1) {
+        left: 38%;
+        top: 4%;
+      }
+
+      .molecule span:nth-child(2) {
+        left: 8%;
+        top: 36%;
+      }
+
+      .molecule span:nth-child(3) {
+        right: 8%;
+        top: 36%;
+      }
+
+      .molecule span:nth-child(4) {
+        left: 38%;
+        bottom: 4%;
+      }
+
+      .molecule::before,
+      .molecule::after {
+        content: "";
+        position: absolute;
+        inset: 25% 15%;
+        border-top: 3px solid rgba(191, 91, 31, 0.7);
+        border-bottom: 3px solid rgba(35, 95, 149, 0.55);
+        transform: rotate(34deg);
+      }
+
+      .molecule::after {
+        transform: rotate(-34deg);
+      }
+
+      .flow-panels {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .flow {
+        min-height: 210px;
+        border-top: 5px solid var(--teal);
+        background: var(--panel);
+        padding: 18px;
+      }
+
+      .flow:nth-child(2) {
+        border-color: var(--orange);
+      }
+
+      .flow:nth-child(3) {
+        border-color: var(--blue);
+      }
+
+      .flow:nth-child(4) {
+        border-color: var(--green);
+      }
+
+      .flow strong {
+        display: block;
+        font-size: 1.05rem;
+        line-height: 1.2;
+      }
+
+      .flow p {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .materials {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .material {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 20px;
+      }
+
+      .material h3 {
+        margin-bottom: 12px;
+        font-size: 1.1rem;
+      }
+
+      .link-list {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .link-list a {
+        display: inline-flex;
+        width: fit-content;
+        max-width: 100%;
+        align-items: center;
+        color: var(--teal);
+        font-weight: 800;
+        overflow-wrap: anywhere;
+      }
+
+      .link-list a::after,
+      .button::after {
+        content: " ->";
+        white-space: pre;
+      }
+
+      .button.disabled::after {
+        content: "";
+      }
+
+      footer {
+        border-top: 1px solid rgba(23, 33, 38, 0.08);
+        padding: 26px 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      footer a {
+        color: var(--teal);
+        font-weight: 800;
+      }
+
+      @media (max-width: 880px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 14px 0;
+        }
+
+        .nav-links {
+          justify-content: flex-start;
+        }
+
+        .hero-grid,
+        .project.featured,
+        .projects,
+        .flow-panels,
+        .materials {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .project-media,
+        .project-media img {
+          min-height: 210px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .wrap {
+          width: min(100% - 24px, 1180px);
+        }
+
+        .quick-facts,
+        .mini-images {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links a,
+        .button {
+          width: 100%;
+        }
+
+        .hero-actions,
+        .project-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap nav">
+        <a class="brand" href="#top" aria-label="Hackathon showcase home">
+          <strong>Summer School Strasbourg 2026</strong>
+          <span>Chemoinformatics hackathon showcase</span>
+        </a>
+        <nav class="nav-links" aria-label="Page navigation">
+          <a href="#projects">Projects</a>
+          <a href="#outputs">Outputs</a>
+          <a href="#materials">Materials</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <p class="eyebrow">June 22-26, 2026 / University of Strasbourg</p>
+            <h1>Strasbourg Summer School in Chemoinformatics 2026 Hackathon</h1>
+            <p class="lead">
+              A compact showcase of five hackathon tracks spanning visual
+              cheminformatics, molecular fragmentation, QSPR reliability,
+              matched molecular pair analysis, and quantum-level reaction-path
+              exploration.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#projects">View Projects</a>
+              <a
+                class="button ghost"
+                href="https://infochim.chimie.unistra.fr/-strasbourg-summer-school-in-chemoinformatics-2026-.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Official School Page
+              </a>
+            </div>
+            <div class="quick-facts" aria-label="Hackathon facts">
+              <div class="fact">
+                <strong>5</strong>
+                <span>project tracks documented from the guide</span>
+              </div>
+              <div class="fact">
+                <strong>3</strong>
+                <span>public code repositories linked directly</span>
+              </div>
+              <div class="fact">
+                <strong>3</strong>
+                <span>local slide decks and PDFs available</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="media-stack" aria-label="Project preview images">
+            <figure class="hero-image">
+              <img
+                src="assets/mmpa-launchpad.jpg"
+                alt="Workflow diagram for identifying datasets, building an MMP database, and querying matched molecular pairs."
+              >
+            </figure>
+            <div class="mini-images">
+              <img
+                src="assets/orange-chemoinformatics.jpg"
+                alt="Orange scatter plot interface for visual chemical data analysis."
+              >
+              <img
+                src="assets/qsprpred.jpg"
+                alt="QSPRpred presentation title slide describing dimensionality reduction plots, biased splitting, and CLI fixes."
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section band" id="projects">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Hackathon Tracks</p>
+              <h2>Project Showcase</h2>
+            </div>
+            <p>
+              Each entry reflects the information in the local guide and
+              the available local presentation material. Missing repository
+              links are marked as pending instead of filled in with guesses.
+            </p>
+          </div>
+
+          <div class="projects">
+            <article class="project featured">
+              <div class="project-media">
+                <img
+                  src="assets/orange-chemoinformatics.jpg"
+                  alt="Orange visual analytics scatter plot with chemical activity values."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-top">
+                  <div>
+                    <p class="eyebrow">Track 01</p>
+                    <h3>Orange-Chemoinformatics</h3>
+                  </div>
+                  <span class="number">1</span>
+                </div>
+                <p>
+                  Work around Orange as a no-code, visual environment for
+                  cheminformatics analysis, with documentation, tutorials, and
+                  customized widgets for molecular workflows.
+                </p>
+                <div class="tags">
+                  <span class="tag">Orange</span>
+                  <span class="tag">visual workflows</span>
+                  <span class="tag">widgets</span>
+                  <span class="tag">tutorials</span>
+                </div>
+                <ul class="deliverables">
+                  <li>Documentation and tutorial material for the Orange add-on.</li>
+                  <li>New-widget concept covering SMILES input, ETKDG, OpenMM MD, and 3D SDF output.</li>
+                  <li>Conformer generation settings with ranked outputs.</li>
+                </ul>
+                <div class="project-actions">
+                  <a
+                    class="button"
+                    href="https://github.com/VanThinhTo/owcheminf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Code
+                  </a>
+                  <a
+                    class="button"
+                    href="https://owcheminf.readthedocs.io/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Docs
+                  </a>
+                  <a class="button" href="slides/OrangeDataMining.pptx">Slides</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-media placeholder-media" aria-hidden="true">
+                <div class="molecule">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="project-top">
+                  <div>
+                    <p class="eyebrow">Track 02</p>
+                    <h3>Re-factoring ISIDA / Fragmentor</h3>
+                  </div>
+                  <span class="number">2</span>
+                </div>
+                <p>
+                  Refactoring track for ISIDA/Fragmentor tooling, centered on
+                  molecular fragmentation workflows used in descriptor and
+                  structure-property modelling pipelines.
+                </p>
+                <div class="tags">
+                  <span class="tag">fragmentation</span>
+                  <span class="tag">refactoring</span>
+                  <span class="tag">descriptors</span>
+                </div>
+                <ul class="deliverables">
+                  <li>Guide entry lists the track but does not provide a repository URL.</li>
+                  <li>Presented as a maintained hackathon topic with code link pending.</li>
+                </ul>
+                <div class="project-actions">
+                  <span class="button disabled" aria-disabled="true">Code pending</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-media">
+                <img
+                  src="assets/qsprpred.jpg"
+                  alt="QSPRpred slide title for model plotting, biased splitting, and CLI bug fixes."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-top">
+                  <div>
+                    <p class="eyebrow">Track 03</p>
+                    <h3>Conformal Prediction in QSPRpred</h3>
+                  </div>
+                  <span class="number">3</span>
+                </div>
+                <p>
+                  Extensions and fixes for QSPRpred, an open-source modelling
+                  toolkit covering data preparation, model training,
+                  validation, visualization, and deployment.
+                </p>
+                <div class="tags">
+                  <span class="tag">QSPR/QSAR</span>
+                  <span class="tag">PCA</span>
+                  <span class="tag">UMAP</span>
+                  <span class="tag">t-SNE</span>
+                </div>
+                <ul class="deliverables">
+                  <li>CLI bug fix plus tests for new plotting functionality.</li>
+                  <li>PCAPlot, UMAPPlot, and TSNEPlot utilities for chemical-space visualization.</li>
+                  <li>Biased splitting methods and tests, including activity-cliff and kNN-failure scenarios.</li>
+                </ul>
+                <div class="project-actions">
+                  <a
+                    class="button"
+                    href="https://github.com/Manas02/QSPRpred"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Code
+                  </a>
+                  <a class="button" href="slides/hack.pdf">Slides</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project featured">
+              <div class="project-media">
+                <img
+                  src="assets/mmpa-launchpad.jpg"
+                  alt="MMPA workflow from curated compounds to rule statistics and generated compounds."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-top">
+                  <div>
+                    <p class="eyebrow">Track 04</p>
+                    <h3>MMPA Launchpad</h3>
+                  </div>
+                  <span class="number">4</span>
+                </div>
+                <p>
+                  Agentic cheminformatics tool for matched molecular pair
+                  analysis, extending ChemSpace Copilot with MMPDB-backed
+                  transformations, predictions, and generated analogues.
+                </p>
+                <div class="tags">
+                  <span class="tag">MMPA</span>
+                  <span class="tag">mmpdb</span>
+                  <span class="tag">agents</span>
+                  <span class="tag">ChemSpace Copilot</span>
+                </div>
+                <ul class="deliverables">
+                  <li>Integration concept for an MMPA toolkit and prompts inside the agent workflow.</li>
+                  <li>Pipeline covering fragment, index, loadprops, transform, predict, and generate.</li>
+                  <li>CSV artifacts for transform results, predicted property changes, and generated structures.</li>
+                </ul>
+                <div class="project-actions">
+                  <a
+                    class="button"
+                    href="https://github.com/buchijw/chemspacecopilot"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Code
+                  </a>
+                  <a
+                    class="button"
+                    href="slides/MMPA%20launchpad%20%20Build%20an%20agentic%20chemoinformatics%20tool%20for%20Matched%20Molecular%20Pair%20Analysis%20%28MMPA%29.pptx"
+                  >
+                    Slides
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-media placeholder-media" aria-hidden="true">
+                <div class="molecule">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="project-top">
+                  <div>
+                    <p class="eyebrow">Track 05</p>
+                    <h3>rIGM - Reaction Path at QM Level</h3>
+                  </div>
+                  <span class="number">5</span>
+                </div>
+                <p>
+                  Exploration track for reaction paths at the quantum-mechanical
+                  level using rIGM-oriented analysis material linked from the
+                  guide.
+                </p>
+                <div class="tags">
+                  <span class="tag">QM</span>
+                  <span class="tag">reaction path</span>
+                  <span class="tag">rIGM</span>
+                </div>
+                <ul class="deliverables">
+                  <li>Guide links the shared materials rather than a GitHub repository.</li>
+                  <li>Displayed as an external resource track for the hackathon.</li>
+                </ul>
+                <div class="project-actions">
+                  <a
+                    class="button"
+                    href="https://unimi2013-my.sharepoint.com/personal/ivan_lopezmata_studenti_unimi_it/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fivan%5Flopezmata%5Fstudenti%5Funimi%5Fit%2FDocuments%2FHard%20Matter%20Lab%2FScavini%2FSummerSchool&amp;ga=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Shared Files
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="outputs">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">What Was Built</p>
+              <h2>Hackathon Outputs</h2>
+            </div>
+            <p>
+              The work concentrates on practical tooling: better interfaces,
+              clearer tutorials, tested modelling utilities, and agent-ready
+              cheminformatics workflows.
+            </p>
+          </div>
+
+          <div class="flow-panels">
+            <div class="flow">
+              <strong>Workflow Interfaces</strong>
+              <p>
+                Orange-Chemoinformatics focused on visual analysis and widget
+                workflows for molecular data tasks.
+              </p>
+            </div>
+            <div class="flow">
+              <strong>Model Diagnostics</strong>
+              <p>
+                QSPRpred gained dimensionality-reduction plots, biased split
+                methods, CLI fixes, and supporting tests.
+              </p>
+            </div>
+            <div class="flow">
+              <strong>Agentic MMPA</strong>
+              <p>
+                MMPA Launchpad connected matched-pair database operations to an
+                agent workflow for transformations and analogue generation.
+              </p>
+            </div>
+            <div class="flow">
+              <strong>Reaction Exploration</strong>
+              <p>
+                The rIGM track points toward quantum-level reaction-path
+                exploration materials shared with the group.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section band" id="materials">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Links</p>
+              <h2>Materials and Sources</h2>
+            </div>
+            <p>
+              Local slide files remain in <code>slides/</code>; project links
+              point to the repositories or shared resources listed in the guide.
+            </p>
+          </div>
+
+          <div class="materials">
+            <section class="material">
+              <h3>Local Slides</h3>
+              <ul class="link-list">
+                <li><a href="slides/OrangeDataMining.pptx">OrangeDataMining.pptx</a></li>
+                <li><a href="slides/hack.pdf">QSPRpred hack.pdf</a></li>
+                <li>
+                  <a href="slides/MMPA%20launchpad%20%20Build%20an%20agentic%20chemoinformatics%20tool%20for%20Matched%20Molecular%20Pair%20Analysis%20%28MMPA%29.pptx">
+                    MMPA Launchpad deck
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+            <section class="material">
+              <h3>Code and Resources</h3>
+              <ul class="link-list">
+                <li>
+                  <a href="https://github.com/VanThinhTo/owcheminf" target="_blank" rel="noopener noreferrer">
+                    Orange-Chemoinformatics
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/Manas02/QSPRpred" target="_blank" rel="noopener noreferrer">
+                    QSPRpred
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/buchijw/chemspacecopilot" target="_blank" rel="noopener noreferrer">
+                    ChemSpace Copilot
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+            <section class="material">
+              <h3>Event Source</h3>
+              <ul class="link-list">
+                <li>
+                  <a
+                    href="https://infochim.chimie.unistra.fr/-strasbourg-summer-school-in-chemoinformatics-2026-.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Official summer school page
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        Built from the local guide, local presentation files, and the
+        <a
+          href="https://infochim.chimie.unistra.fr/-strasbourg-summer-school-in-chemoinformatics-2026-.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >official Strasbourg summer school page</a>.
+      </div>
+    </footer>
+  </body>
+</html>
