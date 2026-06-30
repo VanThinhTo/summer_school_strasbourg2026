@@ -467,7 +467,7 @@
 
       .flow-panels {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
         gap: 14px;
       }
 
@@ -488,6 +488,10 @@
 
       .flow:nth-child(4) {
         border-color: var(--green);
+      }
+
+      .flow:nth-child(5) {
+        border-color: var(--yellow);
       }
 
       .flow strong {
@@ -574,7 +578,6 @@
         .hero-grid,
         .project.featured,
         .projects,
-        .flow-panels,
         .materials {
           grid-template-columns: 1fr;
         }
@@ -657,11 +660,11 @@
                 <span>project tracks documented from the guide</span>
               </div>
               <div class="fact">
-                <strong>3</strong>
-                <span>public code repositories linked directly</span>
+                <strong>5</strong>
+                <span>code and shared-resource links from the guide</span>
               </div>
               <div class="fact">
-                <strong>3</strong>
+                <strong>5</strong>
                 <span>local slide decks and PDFs available</span>
               </div>
             </div>
@@ -697,8 +700,8 @@
             </div>
             <p>
               Each entry reflects the information in the local guide and
-              the available local presentation material. Missing repository
-              links are marked as pending instead of filled in with guesses.
+              the available local presentation material, with code and shared
+              resource links kept close to each project.
             </p>
           </div>
 
@@ -784,11 +787,19 @@
                   <span class="tag">descriptors</span>
                 </div>
                 <ul class="deliverables">
-                  <li>Guide entry lists the track but does not provide a repository URL.</li>
-                  <li>Presented as a maintained hackathon topic with code link pending.</li>
+                  <li>Guide links the hackathon repository hosted by Unistra GitLab.</li>
+                  <li>Local presentation PDF documents the refactoring hackathon track.</li>
                 </ul>
                 <div class="project-actions">
-                  <span class="button disabled" aria-disabled="true">Code pending</span>
+                  <a
+                    class="button"
+                    href="https://git.unistra.fr/isida_public/hackathon_cs3_2026_1/-/tree/main?ref_type=heads"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Code
+                  </a>
+                  <a class="button" href="slides/Hackathon_CS3_2026_1%20%281%29.pdf">Slides</a>
                 </div>
               </div>
             </article>
@@ -917,7 +928,7 @@
                 </div>
                 <ul class="deliverables">
                   <li>Guide links the shared materials rather than a GitHub repository.</li>
-                  <li>Displayed as an external resource track for the hackathon.</li>
+                  <li>Local IGMPlot deck is available alongside the shared files.</li>
                 </ul>
                 <div class="project-actions">
                   <a
@@ -928,6 +939,7 @@
                   >
                     Shared Files
                   </a>
+                  <a class="button" href="slides/IGMPlot.pptx">Slides</a>
                 </div>
               </div>
             </article>
@@ -955,6 +967,13 @@
               <p>
                 Orange-Chemoinformatics focused on visual analysis and widget
                 workflows for molecular data tasks.
+              </p>
+            </div>
+            <div class="flow">
+              <strong>Fragmentation Refactoring</strong>
+              <p>
+                The ISIDA/Fragmentor track captured refactoring work around
+                molecular fragmentation and descriptor workflows.
               </p>
             </div>
             <div class="flow">
@@ -1000,12 +1019,18 @@
               <h3>Local Slides</h3>
               <ul class="link-list">
                 <li><a href="slides/OrangeDataMining.pptx">OrangeDataMining.pptx</a></li>
+                <li>
+                  <a href="slides/Hackathon_CS3_2026_1%20%281%29.pdf">
+                    ISIDA / Fragmentor PDF
+                  </a>
+                </li>
                 <li><a href="slides/hack.pdf">QSPRpred hack.pdf</a></li>
                 <li>
                   <a href="slides/MMPA%20launchpad%20%20Build%20an%20agentic%20chemoinformatics%20tool%20for%20Matched%20Molecular%20Pair%20Analysis%20%28MMPA%29.pptx">
                     MMPA Launchpad deck
                   </a>
                 </li>
+                <li><a href="slides/IGMPlot.pptx">IGMPlot.pptx</a></li>
               </ul>
             </section>
 
@@ -1018,6 +1043,15 @@
                   </a>
                 </li>
                 <li>
+                  <a
+                    href="https://git.unistra.fr/isida_public/hackathon_cs3_2026_1/-/tree/main?ref_type=heads"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ISIDA / Fragmentor
+                  </a>
+                </li>
+                <li>
                   <a href="https://github.com/Manas02/QSPRpred" target="_blank" rel="noopener noreferrer">
                     QSPRpred
                   </a>
@@ -1025,6 +1059,15 @@
                 <li>
                   <a href="https://github.com/buchijw/chemspacecopilot" target="_blank" rel="noopener noreferrer">
                     ChemSpace Copilot
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://unimi2013-my.sharepoint.com/personal/ivan_lopezmata_studenti_unimi_it/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fivan%5Flopezmata%5Fstudenti%5Funimi%5Fit%2FDocuments%2FHard%20Matter%20Lab%2FScavini%2FSummerSchool&amp;ga=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    rIGM shared files
                   </a>
                 </li>
               </ul>
